@@ -1,15 +1,14 @@
 from fastapi import FastAPI
 from app.routes import user
+from app.routes import product
 from app.config.db import Base, engine
 
 app = FastAPI()
 
-# Crear las tablas
+# Create the tables
 Base.metadata.create_all(bind=engine)
 
-#registrar rutas
+# Register routes
 app.include_router(user.router)
 
-
-
-
+app.include_router(product.router)
